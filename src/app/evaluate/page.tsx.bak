@@ -1,0 +1,6 @@
+// This file is a backup and is intentionally left with a .bak extension
+// to resolve a Next.js routing conflict with /src/app/(app)/evaluate/page.tsx.
+// It can be safely deleted.
+// This file is intentionally left blank to resolve a routing conflict.
+// The correct page is located at /src/app/(app)/evaluate/page.tsx
+export default null;
