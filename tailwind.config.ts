@@ -14,8 +14,8 @@ module.exports = {
         neon: '0 6px 18px rgba(255,45,130,0.12)',
       },
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
-        headline: ['PT Sans', 'sans-serif'],
+        body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        headline: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -97,12 +97,12 @@ module.exports = {
             textShadow: '0 0 5px hsl(var(--primary-foreground)), 0 0 10px hsl(var(--primary-foreground)), 0 0 15px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 25px hsl(var(--primary))',
           },
           '50%': {
-             textShadow: '0 0 10px hsl(var(--primary-foreground)), 0 0 20px hsl(var(--primary-foreground)), 0 0 30px hsl(var(--primary) / 0.7), 0 0 40px hsl(var(--primary) / 0.7), 0 0 50px hsl(var(--primary) / 0.7)',
+            textShadow: '0 0 10px hsl(var(--primary-foreground)), 0 0 20px hsl(var(--primary-foreground)), 0 0 30px hsl(var(--primary) / 0.7), 0 0 40px hsl(var(--primary) / 0.7), 0 0 50px hsl(var(--primary) / 0.7)',
           },
         },
         'emoji-beat': {
-            '0%, 100%': { transform: 'scale(1)' },
-            '50%': { transform: 'scale(1.25) rotate(-5deg)' },
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.25) rotate(-5deg)' },
         }
       },
       animation: {

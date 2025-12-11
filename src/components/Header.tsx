@@ -17,27 +17,27 @@ import {
 
 export function Header() {
   const { session, loading } = useAuth();
-  
+
   return (
-    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="flex items-center gap-2">
-            <Link href="/home" className="flex items-center gap-2">
-                <Image src="/3d-kitty.png" alt="Lovekitty logo" width={28} height={28} />
-                <span className="font-bold font-headline text-xl text-primary">Lovekitty</span>
-            </Link>
-            <TooltipProvider>
-               <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" className="text-primary hover:text-primary" onClick={() => window.location.reload()}>
-                        <RefreshCw className="h-5 w-5"/>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Refresh</p>
-                  </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-200">
+      <div className="container flex h-16 items-center px-4">
+        <div className="flex items-center gap-3">
+          <Link href="/home" className="flex items-center gap-2">
+            <Image src="/3d-kitty.png" alt="Lovekitty logo" width={28} height={28} />
+            <span className="font-bold font-headline text-xl text-primary">Lovekitty</span>
+          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-primary hover:text-primary" onClick={() => window.location.reload()}>
+                  <RefreshCw className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Refresh</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           {loading ? (
@@ -46,9 +46,9 @@ export function Header() {
             <TooltipProvider>
               <div className="flex items-center space-x-1">
                 <Link href="/wallet" className="flex items-center space-x-2 rounded-md border border-input bg-transparent px-2 py-1 text-xs font-semibold text-secondary-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer">
-                    <span className="text-sm">💖</span>
-                    <span>0</span>
-                    <Plus className="h-4 w-4 ml-1 text-primary"/>
+                  <span className="text-sm">💖</span>
+                  <span>0</span>
+                  <Plus className="h-4 w-4 ml-1 text-primary" />
                 </Link>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -64,12 +64,12 @@ export function Header() {
                     <p>Friend Requests</p>
                   </TooltipContent>
                 </Tooltip>
-                 <Tooltip>
+                <Tooltip>
                   <TooltipTrigger asChild>
-                     <Button variant="ghost" size="icon" asChild>
-                        <Link href="/search">
-                            <Search className="h-5 w-5" />
-                        </Link>
+                    <Button variant="ghost" size="icon" asChild>
+                      <Link href="/search">
+                        <Search className="h-5 w-5" />
+                      </Link>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>

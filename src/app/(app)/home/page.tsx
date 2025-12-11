@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, DollarSign, Users, Crown, Gift, Heart, MessageCircle, Star, Home, Compass, Search, User, Flame, Users as UsersIcon, MicV2, Settings, Wallet } from 'lucide-react';
+import { Mic, DollarSign, Users, Crown, Gift, Heart, MessageCircle, Star, Home, Compass, Search, User, Flame, Users as UsersIcon, Mic2, Settings, Wallet } from 'lucide-react';
 import SpinWheel from "@/components/SpinWheel";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { QuickNav } from "@/components/QuickNav";
@@ -41,19 +41,18 @@ const vibeChips = [
 
 
 
-function NeonButton({ children, onClick, className = "" }: {children: React.ReactNode, onClick?: () => void, className?: string}) {
+function NeonButton({ children, onClick, className = "" }: { children: React.ReactNode, onClick?: () => void, className?: string }) {
   return (
     <motion.button
       whileTap={{ scale: 0.96 }}
-      whileHover={{ scale: 1.02, filter: 'brightness(1.1)' }}
+      whileHover={{ scale: 1.02 }}
       onClick={onClick}
       className={
-        "relative inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold shadow-neon transition-all " +
+        "relative inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-200 bg-gradient-to-r from-pink-500 to-purple-500 text-white " +
         className
       }
     >
-      <span className="z-10">{children}</span>
-      <span className="absolute inset-0 rounded-full blur-md opacity-30 bg-gradient-to-r from-pink-400 via-purple-500 to-blue-400" />
+      <span className="relative z-10">{children}</span>
     </motion.button>
   );
 }
@@ -73,22 +72,22 @@ function HeroActions({ onOpenRooms, onSpin }: { onOpenRooms: () => void, onSpin:
             <p className="text-gray-400 mt-2">What would you like to do today?</p>
 
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-               <motion.div whileHover={{ scale: 1.02 }} className="rounded-xl p-4 bg-white/50 backdrop-blur-md shadow-card flex items-center gap-4 cursor-pointer hover:bg-pink-50 active:bg-pink-100 transition-colors" onClick={onOpenRooms}>
-                <div className="p-3 rounded-full bg-pink-50 text-pink-500 text-2xl">❤️</div>
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} className="rounded-2xl p-5 bg-white/60 backdrop-blur-md shadow-md hover:shadow-lg flex items-center gap-4 cursor-pointer hover:bg-pink-50 active:bg-pink-100 transition-all duration-200" onClick={onOpenRooms}>
+                <div className="p-3 rounded-full bg-gradient-to-br from-pink-100 to-pink-50 text-pink-600 text-2xl flex items-center justify-center w-12 h-12">❤️</div>
                 <div>
-                  <div className="text-lg font-semibold">Start Vibe Session</div>
-                  <div className="text-xs text-gray-400">Find instant connections</div>
+                  <div className="text-base font-semibold text-gray-800">Start Vibe Session</div>
+                  <div className="text-xs text-gray-500">Find instant connections</div>
                 </div>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} className="rounded-xl p-4 bg-white/50 backdrop-blur-md shadow-card flex items-center gap-4 cursor-pointer hover:bg-pink-50 active:bg-pink-100 transition-colors">
-                <div className="p-3 rounded-full bg-purple-50 text-purple-500 text-2xl">💬</div>
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} className="rounded-2xl p-5 bg-white/60 backdrop-blur-md shadow-md hover:shadow-lg flex items-center gap-4 cursor-pointer hover:bg-purple-50 active:bg-purple-100 transition-all duration-200">
+                <div className="p-3 rounded-full bg-gradient-to-br from-purple-100 to-purple-50 text-purple-600 text-2xl flex items-center justify-center w-12 h-12">💬</div>
                 <div>
-                  <div className="text-lg font-semibold">Instant Chat</div>
-                  <div className="text-xs text-gray-400">Send a vibe request</div>
+                  <div className="text-base font-semibold text-gray-800">Instant Chat</div>
+                  <div className="text-xs text-gray-500">Send a vibe request</div>
                 </div>
               </motion.div>
-               <motion.div whileHover={{ scale: 1.02 }} className="rounded-xl p-4 bg-white/50 backdrop-blur-md shadow-card flex items-center gap-4 cursor-pointer hover:bg-pink-50 active:bg-pink-100 transition-colors">
+              <motion.div whileHover={{ scale: 1.02 }} className="rounded-xl p-4 bg-white/50 backdrop-blur-md shadow-card flex items-center gap-4 cursor-pointer hover:bg-pink-50 active:bg-pink-100 transition-colors">
                 <div className="p-3 rounded-full bg-green-50 text-green-500"><DollarSign /></div>
                 <div>
                   <div className="text-lg font-semibold">Start Paid Chat</div>
@@ -130,7 +129,7 @@ function HeroActions({ onOpenRooms, onSpin }: { onOpenRooms: () => void, onSpin:
   );
 }
 
-function FloatingAvatars({ creators }: {creators: typeof creatorsSeed}) {
+function FloatingAvatars({ creators }: { creators: typeof creatorsSeed }) {
   return (
     <section className="px-4 md:px-8 py-6">
       <div className="flex items-center justify-between">
@@ -138,7 +137,7 @@ function FloatingAvatars({ creators }: {creators: typeof creatorsSeed}) {
         <a className="text-pink-400 font-semibold">View All →</a>
       </div>
 
-       <div className="mt-6 overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide py-2 -mx-4 px-4">
+      <div className="mt-6 overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide py-2 -mx-4 px-4">
         {creators.map((c, i) => (
           <motion.div
             key={c.id}
@@ -155,7 +154,7 @@ function FloatingAvatars({ creators }: {creators: typeof creatorsSeed}) {
   );
 }
 
-function VibeChips({ active, setActive }: {active: string, setActive: (id: string) => void}) {
+function VibeChips({ active, setActive }: { active: string, setActive: (id: string) => void }) {
   return (
     <div className="px-4 md:px-8 py-6">
       <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
@@ -164,9 +163,8 @@ function VibeChips({ active, setActive }: {active: string, setActive: (id: strin
             key={chip.id}
             onClick={() => setActive(chip.id)}
             whileTap={{ scale: 0.95 }}
-            className={`whitespace-nowrap px-4 py-2 rounded-full border transition-colors ${
-              active === chip.id ? "bg-pink-500 text-white" : "bg-white/50 backdrop-blur-md hover:bg-pink-50"
-            }`}
+            className={`whitespace-nowrap px-4 py-2 rounded-full border transition-colors ${active === chip.id ? "bg-pink-500 text-white" : "bg-white/50 backdrop-blur-md hover:bg-pink-50"
+              }`}
           >
             <span className="mr-2">{chip.emoji}</span>
             {chip.label}
@@ -177,7 +175,7 @@ function VibeChips({ active, setActive }: {active: string, setActive: (id: strin
   );
 }
 
-function CreatorList({ creators }: {creators: typeof creatorsSeed}) {
+function CreatorList({ creators }: { creators: typeof creatorsSeed }) {
   return (
     <div className="px-4 md:px-8 pb-16">
       <div className="space-y-6">
@@ -211,7 +209,7 @@ function CreatorList({ creators }: {creators: typeof creatorsSeed}) {
   );
 }
 
-function SwipeDeck({ cards, onLike }: {cards: typeof creatorsSeed, onLike: (card: any) => void}) {
+function SwipeDeck({ cards, onLike }: { cards: typeof creatorsSeed, onLike: (card: any) => void }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -227,43 +225,43 @@ function SwipeDeck({ cards, onLike }: {cards: typeof creatorsSeed, onLike: (card
 
   return (
     <div className="px-4 md:px-8 py-8">
-       <div className="overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide py-2 -mx-4 px-4">
+      <div className="overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide py-2 -mx-4 px-4">
         {cards.map((card, i) => (
-             <motion.div
-                key={card.id}
-                className="min-w-[90%] sm:min-w-[70%] md:min-w-[60%] snap-center"
-              >
-                <div
-                  className="rounded-2xl bg-white/50 backdrop-blur-md p-6 shadow-card"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-20 h-20 rounded-full bg-pink-50 flex items-center justify-center font-bold text-pink-600">{card.name.charAt(0)}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-semibold text-xl">{card.name}</div>
-                          <div className="text-sm text-gray-400">{card.tag}</div>
-                        </div>
-                        <div className="text-sm text-yellow-500">⭐ {card.rating}</div>
-                      </div>
-
-                      <p className="mt-3 text-gray-500">{card.bio || "This creator loves deep convos and chill vibes."}</p>
-
-                      <div className="mt-4 flex gap-3">
-                        <NeonButton onClick={() => onLike(card)} className="px-5">Send Vibe</NeonButton>
-                        <button onClick={next} className="px-4 py-2 rounded-full border hover:bg-gray-100 active:bg-gray-200 transition-colors">Skip</button>
-                      </div>
+          <motion.div
+            key={card.id}
+            className="min-w-[90%] sm:min-w-[70%] md:min-w-[60%] snap-center"
+          >
+            <div
+              className="rounded-2xl bg-white/50 backdrop-blur-md p-6 shadow-card"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-20 h-20 rounded-full bg-pink-50 flex items-center justify-center font-bold text-pink-600">{card.name.charAt(0)}</div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-xl">{card.name}</div>
+                      <div className="text-sm text-gray-400">{card.tag}</div>
                     </div>
+                    <div className="text-sm text-yellow-500">⭐ {card.rating}</div>
+                  </div>
+
+                  <p className="mt-3 text-gray-500">{card.bio || "This creator loves deep convos and chill vibes."}</p>
+
+                  <div className="mt-4 flex gap-3">
+                    <NeonButton onClick={() => onLike(card)} className="px-5">Send Vibe</NeonButton>
+                    <button onClick={next} className="px-4 py-2 rounded-full border hover:bg-gray-100 active:bg-gray-200 transition-colors">Skip</button>
                   </div>
                 </div>
-            </motion.div>
+              </div>
+            </div>
+          </motion.div>
         ))}
-       </div>
+      </div>
     </div>
   );
 }
 
-function LiveRoomModal({ open, onClose }: { open: boolean, onClose: () => void}) {
+function LiveRoomModal({ open, onClose }: { open: boolean, onClose: () => void }) {
   return (
     <AnimatePresence>
       {open && (
@@ -325,11 +323,11 @@ export default function LovekittyDashboard() {
   return (
     <div className="min-h-screen text-gray-800">
       <main>
-          <HeroActions onOpenRooms={() => setRoomsOpen(true)} onSpin={() => setSpinOpen(true)} />
-          <FloatingAvatars creators={creators} />
-          <VibeChips active={activeVibe} setActive={setActiveVibe} />
-          <SwipeDeck cards={creators} onLike={handleLike} />
-          <CreatorList creators={creators} />
+        <HeroActions onOpenRooms={() => setRoomsOpen(true)} onSpin={() => setSpinOpen(true)} />
+        <FloatingAvatars creators={creators} />
+        <VibeChips active={activeVibe} setActive={setActiveVibe} />
+        <SwipeDeck cards={creators} onLike={handleLike} />
+        <CreatorList creators={creators} />
       </main>
 
       <LiveRoomModal open={roomsOpen} onClose={() => setRoomsOpen(false)} />
@@ -338,9 +336,9 @@ export default function LovekittyDashboard() {
   );
 }
 
-    
 
-    
+
+
 
 
 
